@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 1em;
+}
+header {
+    background-color: #091F43;
+}
+
+.container {
+    max-width: 1000px;
+}
+/* .outline {
+    outline: 2px solid #000;
+} */
+.icon{
+    position: relative;
+    top: -50px;
+    border-radius: 50%;
+    width: 100px;
+    margin-bottom: -50px;
+}
+.nav-hover{
+    position: absolute;
+    right: 50%;
+    bottom: 15px;
+    transform: translateX(50%);
+    width: 0%;
+    height: 1px;
+    border-radius: 4px;
+
+    transition: all 500ms;
+}
+li:hover span.nav-hover{
+    width: 80%;
+}
+.clr-focus{
+    background: none;
+    border: 1px solid #091F43;
+    border-radius: 5px;
+}
+input#search:focus {
+    border: 1px solid #091F43;
+    outline: 4px solid #fff;
+}
+.btn-primary1 {
+    background: #091F43 !important;
+}
+.btn-primary1:hover {
+    /* background: #0b2652 !important; */
+    transform: scale(1.025);
+}
+.card {
+    min-width: 280px;
+    margin: 0 auto;
+}
+footer {
+    transform: translateY(100%);
+}
+
+@media (max-width: 576px){
+    li.b-top {
+        display: block;
+        width: 100%;
+        text-align: center;
+        border: 1px solid transparent;
+        border-top-color: rgba(255, 255, 255, 0.2);
+    }
+    li.b-top:hover {
+        background: #0b2652;
+    }
+    li.b-top:hover span {
+        /* width: 0% !important; */
+        display: none;
+    }
+}
