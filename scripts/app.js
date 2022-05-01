@@ -5,6 +5,8 @@ const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 const errorCard = document.querySelector('.errorcard');
 const footer = document.querySelector('footer');
+// call forecast class
+const forecast = new Forecast();
 
 
 cityForm.addEventListener('keyup', () => {
@@ -43,19 +45,13 @@ const updateUI = data =>{
     time.setAttribute('src', timeSrc);
 };
 
-//update city search
-const updateCity = async (city) => {
-    const cityDets = await getCity(city);
-    const cityWeather = await getWeather( cityDets.Key );
-
-    return { cityDets, cityWeather }; // our cityData
-};
 cityForm.addEventListener('submit', e => {
     e.preventDefault();
     const city = cityForm.city.value.trim();
     cityForm.reset();
     
-    updateCity( city )
+    // forecast object
+    forecast.updateCity( city )
         .then(data =>{
             console.log(data);
             return updateUI(data);
@@ -66,9 +62,10 @@ cityForm.addEventListener('submit', e => {
     // store last search
     localStorage.setItem('citySearched', city); 
 });
+
 //reload last search on refresh
 if(localStorage.getItem('citySearched')){
-    updateCity(localStorage.getItem('citySearched'))
+    forecast.updateCity(localStorage.getItem('citySearched'))
         .then(data => updateUI(data))
         .catch( () => errorCard.classList.remove('d-none'));
 }
